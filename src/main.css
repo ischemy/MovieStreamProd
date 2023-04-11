@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Raleway:wght@500;700&family=Share&display=swap");
+html,
+body {
+  background: black;
+}
+iframe {
+  border-radius: 50px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+.ml-6 {
+  margin-left: 6rem;
+}
+.ml-10 {
+  margin-left: 10rem;
+}
+
+.nav-link {
+  color: white;
+}
+
+.main-font {
+  font-family: "Share", cursive;
+}
+
+img {
+  border-radius: 10px;
+}
+
+.text-gray {
+  color: rgb(169, 169, 169);
+}
+
+.border-transparent {
+  border-color: transparent;
+}
+button {
+  border-radius: 10px;
+}
+
+.active {
+  background: gray;
+}
+.nav-link {
+  border-radius: 10px;
+}
+.nav-link:hover {
+  color: cyan;
+}
+
+.breadcrumb-item.active {
+  background: transparent;
+  border-color: transparent;
+}
+@media only screen and (min-width: 800px) {
+  .container {
+    width: auto;
+  }
+}
+
+hr.solid {
+  border-top: 2px solid white;
+}
+
+.hidden {
+  display: none;
+}
+
+.ml-10-px {
+  margin-left: 10px;
+}
+
+.gray-mode {
+  background-color: gray;
+}
+
+.closebtn:hover {
+  color: black;
+}
