@@ -32,7 +32,10 @@ function Footer() {
                     <div className="modal-body">
                       <form>
                         <div className="mb-3">
-                          <label for="CuName" className="form-label text-dark">
+                          <label
+                            htmlFor="CuName"
+                            className="form-label text-dark"
+                          >
                             Name
                           </label>
                           <input
@@ -42,7 +45,10 @@ function Footer() {
                           />
                         </div>
                         <div className="mb-3">
-                          <label for="CuEmail" className="form-label text-dark">
+                          <label
+                            htmlFor="CuEmail"
+                            className="form-label text-dark"
+                          >
                             Email address
                           </label>
                           <input
@@ -52,7 +58,7 @@ function Footer() {
                             aria-describedby="emailHelp"
                           />
                         </div>
-                        <label for="feedbackarea" className="text-dark">
+                        <label htmlFor="feedbackarea" className="text-dark">
                           Feedback
                         </label>
                         <br />

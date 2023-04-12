@@ -9,11 +9,6 @@ import Modal from "react-bootstrap/Modal";
 import Image from "react-bootstrap/Image";
 
 function Detail() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   return (
     <>
       <Container className="mt-5">

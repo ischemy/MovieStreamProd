@@ -10,11 +10,6 @@ import Image from "react-bootstrap/Image";
 import MovieItem from "../items/MovieItem";
 
 function Home() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   return (
     <>
       <Container className="mt-5">

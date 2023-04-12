@@ -17,7 +17,9 @@ function MovieItem() {
   function handleClose() {
     return setShow(false);
   }
-  const handleShow = () => setShow(true);
+  function handleShow() {
+    return setShow(true);
+  }
 
   useEffect(() => {
     axios({
@@ -40,6 +42,7 @@ function MovieItem() {
                   className="bg-transparent"
                   style={{ width: "20rem" }}
                   onClick={handleShow}
+                  key={movie.id}
                 >
                   <Card.Img
                     height={"350px"}
@@ -53,7 +56,7 @@ function MovieItem() {
                   </Card.Body>
                 </Card>
 
-                <Modal show={show} onHide={handleClose}>
+                <Modal show={show} onHide={handleClose} key={movie.id}>
                   <Modal.Header closeButton>
                     <Modal.Title>{movie.title}</Modal.Title>
                   </Modal.Header>
@@ -66,7 +69,7 @@ function MovieItem() {
                     {movie.overview}
                   </Modal.Body>
                   <Modal.Footer>
-                    <Button variant="primary" href={`/detail/:id`}>
+                    <Button variant="primary" href={`/detail`}>
                       Play
                     </Button>
                     <Button variant="secondary" onClick={handleClose}>
