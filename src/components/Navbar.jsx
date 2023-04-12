@@ -18,7 +18,7 @@ function Navigationbar() {
       <div data-aos="fade-down">
         <Navbar bg="transparent" expand="lg">
           <Container fluid>
-            <Navbar.Brand href="#">
+            <Navbar.Brand href={"/"}>
               <Image src={Logo}></Image>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
@@ -40,10 +40,10 @@ function Navigationbar() {
                 style={{ maxHeight: "100px" }}
                 navbarScroll
               >
-                <Nav.Link href="#action1" className="main-font">
+                <Nav.Link href={"/"} className="main-font">
                   Home
                 </Nav.Link>
-                <Nav.Link href="#action2" className="main-font">
+                <Nav.Link href={"/watchlist"} className="main-font">
                   WatchList
                 </Nav.Link>
                 <Nav.Link href="">
