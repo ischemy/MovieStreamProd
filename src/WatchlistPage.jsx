@@ -4,7 +4,7 @@ import Navigationbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Watchlist from "./layouts/Watchlist";
 
-function App() {
+function WatchlistPage() {
   return (
     <>
       <Navigationbar />
@@ -14,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export default WatchlistPage;

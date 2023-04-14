@@ -1,16 +1,17 @@
+import { useState } from "react";
 import "./main.css";
 import Navigationbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./layouts/Home";
+import Login from "./layouts/Login";
 
-function App() {
+function LoginPage() {
+ 
   return (
     <>
       <Navigationbar />
-      <Home />
-      <Footer />
+      <Login />
     </>
   );
 }
 
-export default App;
+export default LoginPage;

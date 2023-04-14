@@ -1,18 +1,16 @@
-
 import Container from "react-bootstrap/Container";
-
 import React, { useState } from "react";
+import LoginForm from "../items/LoginForm";
 
-import MovieItem from "../items/MovieItem";
 
-function Home() {
+function Login() {
   return (
     <>
       <Container className="mt-5">
-        <MovieItem />
+        <LoginForm />
       </Container>
     </>
   );
 }
 
-export default Home;
+export default Login;

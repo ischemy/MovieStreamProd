@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import Detail from "./DetailPage";
-import Watchlist from "./WatchlistPage";
+import DetailPage from "./DetailPage";
+import WatchlistPage from "./WatchlistPage";
+import LoginPage from "./LoginPage";
 
 import "./main.css";
 
@@ -16,13 +17,12 @@ const router = createBrowserRouter([
         <App />
       </>
     ),
-    errorElement: <p>Page Not Found</p>,
   },
   {
     path: "/detail",
     element: (
       <>
-        <Detail />
+        <DetailPage />
       </>
     ),
     errorElement: <p>Page Not Found</p>,
@@ -31,7 +31,16 @@ const router = createBrowserRouter([
     path: "/watchlist",
     element: (
       <>
-        <Watchlist />
+        <WatchlistPage />
+      </>
+    ),
+    errorElement: <p>Page Not Found</p>,
+  },
+  {
+    path: "/login",
+    element: (
+      <>
+        <LoginPage />
       </>
     ),
     errorElement: <p>Page Not Found</p>,

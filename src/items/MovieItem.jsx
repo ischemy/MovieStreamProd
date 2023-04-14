@@ -10,21 +10,19 @@ import Image from "react-bootstrap/Image";
 import axios from "axios";
 
 function MovieItem() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState();
   const [moviedata, setMovieData] = useState([{}]);
   const img_path = "https://www.themoviedb.org/t/p/w220_and_h330_face/";
+  const URL_API = "https://api.themoviedb.org/3";
+  const API_KEY = "560d2707c1f25f499312a978ad129c74";
 
-  function handleClose() {
-    return setShow(false);
-  }
-  function handleShow() {
-    return setShow(true);
-  }
+  const handleShow = (id) => setShow(id);
+  const handleClose = () => setShow(false);
 
   useEffect(() => {
     axios({
       method: "get",
-      url: "https://api.themoviedb.org/3/movie/popular?api_key=560d2707c1f25f499312a978ad129c74",
+      url: `${URL_API}/movie/popular?api_key=${API_KEY}`,
     }).then(function (response) {
       console.log(response.data.results);
       setMovieData(response.data.results);
@@ -41,8 +39,7 @@ function MovieItem() {
                 <Card
                   className="bg-transparent"
                   style={{ width: "20rem" }}
-                  onClick={handleShow}
-                  key={movie.id}
+                  onClick={() => handleShow(movie.id)}
                 >
                   <Card.Img
                     height={"350px"}
@@ -56,15 +53,21 @@ function MovieItem() {
                   </Card.Body>
                 </Card>
 
-                <Modal show={show} onHide={handleClose} key={movie.id}>
+                <Modal show={show === movie.id} onHide={handleClose}>
                   <Modal.Header closeButton>
-                    <Modal.Title>{movie.title}</Modal.Title>
+                    <Modal.Title>
+                      <h1>Movie ID : {movie.id}</h1>
+                    </Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
+                    <h2> {movie.title}</h2>
                     <Image
                       width={465}
+                      height={350}
                       src={img_path + movie.poster_path}
                     ></Image>
+                    <br />
+                    <h3>Movie Popularity : {movie.popularity}</h3>
                     <br />
                     {movie.overview}
                   </Modal.Body>
