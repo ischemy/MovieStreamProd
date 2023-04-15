@@ -11,8 +11,8 @@ import Image from "react-bootstrap/esm/Image";
 import React, { useState } from "react";
 
 function Navigationbar() {
-  const [toggleOneModal, setToggleOneModal] = useState(false);
-  const [toggleTwoModal, setToggleTwoModal] = useState(false);
+
+  
   return (
     <>
       <div data-aos="fade-down">
