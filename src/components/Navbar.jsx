@@ -9,10 +9,12 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Image from "react-bootstrap/esm/Image";
 import React, { useState } from "react";
+import LoginForm from "../items/LoginForm";
+import ModalProfile from "../items/ModalProfile";
 
 function Navigationbar() {
+  const isLogin = JSON.parse(localStorage.getItem("user-info"));
 
-  
   return (
     <>
       <div data-aos="fade-down">
@@ -46,9 +48,13 @@ function Navigationbar() {
                 <Nav.Link href={"/watchlist"} className="main-font">
                   WatchList
                 </Nav.Link>
-                <Nav.Link href={"/login"}>
-                  <Button variant="primary">Login</Button>
-                </Nav.Link>
+                {!isLogin ? (
+                  <Nav.Link>
+                    <LoginForm />
+                  </Nav.Link>
+                ) : (
+                  <ModalProfile />
+                )}
               </Nav>
             </Navbar.Collapse>
           </Container>

@@ -1,4 +1,5 @@
 import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import React, { useEffect, useState, useRef } from "react";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
@@ -9,10 +10,14 @@ import { useNavigate } from "react-router-dom";
 function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [show, setShow] = useState();
   const URL_API = "https://api.themoviedb.org/3";
   const API_KEY = "560d2707c1f25f499312a978ad129c74";
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
-  function handleLogin() {
+  function handleLogin(event) {
+    event.preventDefault();
     axios({
       method: "get",
       url: `${URL_API}/authentication/token/new?api_key=${API_KEY}`,
@@ -38,11 +43,9 @@ function LoginForm() {
             JSON.stringify(response3.data.session_id)
           );
           axios({
-            method: "post",
+            method: "get",
             url: `${URL_API}/account?api_key=${API_KEY}`,
-            data: {
-              params: { session_id: response3.data.session_id },
-            },
+            params: { session_id: response3.data.session_id },
           }).then(function (response4) {
             window.location.reload();
             console.log(response4);
@@ -53,31 +56,47 @@ function LoginForm() {
   }
   return (
     <>
-      <Form>
-        <Form.Group className="mb-3" controlId="usernamefc">
-          <Form.Label className="text-white">Username</Form.Label>
-          <Form.Control
-            onChange={(e) => setUsername(e.target.value)}
-            type="text"
-            placeholder="username"
-            autoFocus
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="passwordfc">
-          <Form.Label className="text-white">Password</Form.Label>
-          <Form.Control
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            placeholder="Password"
-            autoFocus
-            required
-          />
-        </Form.Group>
-      </Form>
-      <Button variant="primary" type="submit" onClick={handleLogin()}>
+      <Button variant="primary" onClick={handleShow}>
         Login
       </Button>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <h1>Login</h1>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3" controlId="usernamefc">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                onChange={(e) => setUsername(e.target.value)}
+                type="text"
+                placeholder="username"
+                autoFocus
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="passwordfc">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                placeholder="Password"
+                autoFocus
+                required
+              />
+            </Form.Group>
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={(e) => handleLogin(e)}
+            >
+              Login
+            </Button>
+          </Form>
+        </Modal.Body>
+      </Modal>
     </>
   );
 }

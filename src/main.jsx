@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import DetailPage from "./DetailPage";
 import WatchlistPage from "./WatchlistPage";
-import LoginPage from "./LoginPage";
 
 import "./main.css";
 
@@ -32,15 +31,6 @@ const router = createBrowserRouter([
     element: (
       <>
         <WatchlistPage />
-      </>
-    ),
-    errorElement: <p>Page Not Found</p>,
-  },
-  {
-    path: "/login",
-    element: (
-      <>
-        <LoginPage />
       </>
     ),
     errorElement: <p>Page Not Found</p>,
