@@ -21,8 +21,14 @@ a {
 .ml-6 {
   margin-left: 6rem;
 }
+.mr-6 {
+  margin-right: 6rem;
+}
 .ml-10 {
   margin-left: 10rem;
+}
+.ml-98 {
+  margin-left: 9.8rem;
 }
 
 .nav-link {

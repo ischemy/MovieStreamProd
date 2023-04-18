@@ -1,6 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import React, { useEffect, useState } from "react";
+import "../main.css";
 
 import axios from "axios";
 
@@ -30,17 +31,19 @@ function ModalProfile() {
 
   return (
     <>
-      <Button variant="success" onClick={handleShow}>
-        Profile
+      <Button variant="danger" onClick={handleShow}>
+        Logout
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>
-            <h1>Profile</h1>
-            <Button onClick={handleLogout}>Logout</Button>
-          </Modal.Title>
+          <Modal.Title> Are you sure you want to logout?? </Modal.Title>
         </Modal.Header>
-        <Modal.Body></Modal.Body>
+        <Modal.Body>
+          <div className="ml-10 mr-6 d-flex gap-4">
+            <Button onClick={handleLogout}>Yes</Button>
+            <Button onClick={handleClose}>No</Button>
+          </div>
+        </Modal.Body>
       </Modal>
     </>
   );
