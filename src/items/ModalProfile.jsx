@@ -7,7 +7,7 @@ import axios from "axios";
 
 function ModalProfile() {
   const [show, setShow] = useState();
-  const [profile, setProfile] = useState({});
+  const [username, setUsername] = useState({});
 
   const handleShow = (id) => setShow(id);
   const handleClose = () => setShow(false);
@@ -24,25 +24,31 @@ function ModalProfile() {
       method: "get",
       url: `${URL_API}/account?api_key=${API_KEY}&session_id=${isLogin}`,
     }).then(function (response) {
-      console.log(response.data);
-      setProfile(response.data);
+      console.log(response.data.id);
+      setUsername(response.data.username);
     });
   }, []);
 
   return (
     <>
-      <Button variant="danger" onClick={handleShow}>
-        Logout
+      <Button variant="success" onClick={handleShow}>
+        Profile
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title> Are you sure you want to logout?? </Modal.Title>
+          <Modal.Title>
+            {" "}
+            Hello,{" "}
+            {username.toString(() => {
+              return <></>;
+            })}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="ml-10 mr-6 d-flex gap-4">
-            <Button onClick={handleLogout}>Yes</Button>
-            <Button onClick={handleClose}>No</Button>
-          </div>
+          <h2>Do You Want To Logout ? </h2>
+          <Button variant="danger" onClick={handleLogout}>
+            Logout
+          </Button>
         </Modal.Body>
       </Modal>
     </>
