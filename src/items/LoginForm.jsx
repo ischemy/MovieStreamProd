@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState({});
+  const [password, setPassword] = useState("");
   const [show, setShow] = useState();
   const URL_API = "https://api.themoviedb.org/3";
   const API_KEY = "560d2707c1f25f499312a978ad129c74";
@@ -47,8 +47,12 @@ function LoginForm() {
             url: `${URL_API}/account?api_key=${API_KEY}`,
             params: { session_id: response3.data.session_id },
           }).then(function (response4) {
+            localStorage.setItem(
+              "detail-account",
+              JSON.stringify(response4.data)
+            );
             window.location.reload();
-            console.log(response4);
+            console.log(response4.data);
           });
         });
       });
