@@ -11,13 +11,34 @@ import axios from "axios";
 
 function MovieItem() {
   const [show, setShow] = useState();
-  const [moviedata, setMovieData] = useState([{}]);
+  const [moviedata, setMovieData] = useState([]);
+
   const img_path = "https://www.themoviedb.org/t/p/w220_and_h330_face/";
   const URL_API = "https://api.themoviedb.org/3";
   const API_KEY = "560d2707c1f25f499312a978ad129c74";
+  const user = JSON.parse(localStorage.getItem("detail-account"));
+  const isLogin = JSON.parse(localStorage.getItem("user-info"));
 
   const handleShow = (id) => setShow(id);
   const handleClose = () => setShow(false);
+
+  function AddToWatchlist(id) {
+    axios({
+      method: "post",
+      url: `${URL_API}/account/${user.id}/watchlist`,
+      data: {
+        media_id: id,
+        watchlist: true,
+        media_type: "movie",
+      },
+      params: {
+        api_key: API_KEY,
+        session_id: isLogin,
+      },
+    }).then(function (response) {
+      console.log(response);
+    });
+  }
 
   useEffect(() => {
     axios({
@@ -72,10 +93,13 @@ function MovieItem() {
                     {movie.overview}
                   </Modal.Body>
                   <Modal.Footer>
-                    <Button variant="primary" href={`/detail`}>
+                    <Button variant="primary" href={`/detail/${movie.id}`}>
                       Play
                     </Button>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button
+                      variant="secondary"
+                      onClick={(e) => AddToWatchlist(movie.id)}
+                    >
                       Watchlist
                     </Button>
                   </Modal.Footer>

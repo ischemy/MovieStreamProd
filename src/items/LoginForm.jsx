@@ -22,6 +22,7 @@ function LoginForm() {
       method: "get",
       url: `${URL_API}/authentication/token/new?api_key=${API_KEY}`,
     }).then(function (response) {
+      console.log(response);
       axios({
         method: "post",
         url: `${URL_API}/authentication/token/validate_with_login?api_key=${API_KEY}`,
@@ -42,6 +43,7 @@ function LoginForm() {
             "user-info",
             JSON.stringify(response3.data.session_id)
           );
+          console.log(response3.data.session_id);
           axios({
             method: "get",
             url: `${URL_API}/account?api_key=${API_KEY}`,

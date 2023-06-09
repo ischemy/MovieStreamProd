@@ -5,11 +5,13 @@ import React, { useEffect, useState } from "react";
 function Watchlist() {
   const [showWatchlist, setShowWatchlist] = useState([{}]);
   const img_path = "https://www.themoviedb.org/t/p/w220_and_h330_face/";
+  const isLogin = JSON.parse(localStorage.getItem("user-info"));
+  const user = JSON.parse(localStorage.getItem("detail-account"));
 
   useEffect(() => {
     axios({
       method: "get",
-      url: "https://api.themoviedb.org/3/account/18663867/watchlist/movies?api_key=560d2707c1f25f499312a978ad129c74&session_id=6b9736518fa6ee639d5b1261013c89cd8783d957",
+      url: `https://api.themoviedb.org/3/account/${user.id}/watchlist/movies?api_key=560d2707c1f25f499312a978ad129c74&session_id=${isLogin}`,
     }).then(function (response) {
       console.log(response.data.results);
       setShowWatchlist(response.data.results);
