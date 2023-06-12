@@ -37,6 +37,8 @@ function MovieItem() {
       },
     }).then(function (response) {
       console.log(response.data.status_message);
+      alert(response.data.status_message);
+      window.location.reload();
     });
   }
 
