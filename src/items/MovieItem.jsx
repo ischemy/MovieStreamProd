@@ -36,7 +36,7 @@ function MovieItem() {
         session_id: isLogin,
       },
     }).then(function (response) {
-      console.log(response);
+      console.log(response.data.status_message);
     });
   }
 
